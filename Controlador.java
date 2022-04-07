@@ -8,6 +8,7 @@
  */
 
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
@@ -21,6 +22,7 @@ private static Vista vista = new Vista();
     public static void main(String[] args) throws IOException {
         BinaryTree<ComparableAssociation<String,String>> dictionary = new BinaryTree<ComparableAssociation<String,String>>();
 		ComparableAssociation<String, String> association;
+        ArrayList<ComparableAssociation<String,String>> di_ordenado;
 
          //propiedades
          int opcion;
@@ -49,17 +51,31 @@ private static Vista vista = new Vista();
 
         while(opcion != 5){
             switch(opcion){
-                case 1: //Ordenar Inorder
-			    ArrayList<ComparableAssociation<String,String>> di_ordenado =  dictionary.inOrder(dictionary.getRoot());
+                case 1: //Ordenar In order
+			    di_ordenado =  dictionary.inOrder(dictionary.getRoot());
 			    vista.mensaje("\n Diccionario ordenado in order\n");
 			    for(int i=0; i<di_ordenado.size(); i++){
 				System.out.println("("+di_ordenado.get(i).getKey()+", "+di_ordenado.get(i).getValue()+")");
 			    }
+                di_ordenado.clear();
                 break;
                 case 2: //Agregar palabra 
+                String nuevaP = vista.getPalabraNueva();
+                String nuevaT= vista.getTradNueva();
+                association= new ComparableAssociation<String,String>(nuevaP, nuevaT);
+                dictionary.addValue(association); //Se agregan datos al tree
+                vista.mensaje("\nSu palabra se agrego exitosamente al arbol!!!");
+                di_ordenado =  dictionary.inOrder(dictionary.getRoot());
+			    vista.mensaje("\n Diccionario actualizado in order:\n");
+			    for(int i=0; i<di_ordenado.size(); i++){
+				vista.mensaje("("+di_ordenado.get(i).getKey()+", "+di_ordenado.get(i).getValue()+")");
+			    }
+                di_ordenado.clear();
 
                 break;
                 case 3: //Eliminar palabra
+                String palabraremove = vista.getPalabra();
+                    
                 break;
                 case 4: // Traducir
                 break;
