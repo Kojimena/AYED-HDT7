@@ -39,7 +39,7 @@ public class Vista {
     */
     public int menu(){
         mensaje("\n" +"Ingrese la opcion a realizar ");
-        mensaje("\n\n1. Recorrer diccionario *in order* ");
+        mensaje("\n1. Recorrer diccionario *in order* ");
         mensaje("\n2. Agregar palabra al diccionario ");
         mensaje("\n3. Eliminar palabra del diccionario ");
         mensaje("\n4. Procesar archivo para traducirlo");
