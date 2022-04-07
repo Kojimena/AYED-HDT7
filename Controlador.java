@@ -8,10 +8,8 @@
  */
 
 import java.io.File;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.LinkedHashMap;
 import java.util.Scanner;
 
 public class Controlador {
@@ -73,9 +71,8 @@ private static Vista vista = new Vista();
                 di_ordenado.clear();
 
                 break;
-                case 3: //Eliminar palabra
-                String palabraremove = vista.getPalabra();
-                    
+                case 3: //Cambiar valor
+                
                 break;
                 case 4: // Traducir
                 break;

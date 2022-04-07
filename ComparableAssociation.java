@@ -1,3 +1,11 @@
+/**
+ * Clase que realiza las asociaciones
+ * @author Jimena Hernandez/21199
+ * @version 08/04/2022
+ * Universidad del Valle de Guatemala
+ * Algoritmos y estructuras de Datos
+ * HDT7
+ */
 import java.lang.*;
 
 public class ComparableAssociation<K extends Comparable<K>,V> implements Comparable<ComparableAssociation<K,V>>{
@@ -30,6 +38,7 @@ public class ComparableAssociation<K extends Comparable<K>,V> implements Compara
 	public V getValue(){
 		return this.value;
 	}
+
 
 
 

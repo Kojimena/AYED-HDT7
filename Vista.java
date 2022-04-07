@@ -76,7 +76,21 @@ public class Vista {
 
     public String getTradNueva(){
 
-        mensaje("\nIngrese el significado en español de la palabra agregada\n");
+        mensaje("\nIngrese el nuevo significado en español de la palabra agregada\n");
+
+        return scan.nextLine();
+    }
+
+    public String getPalabracambio(){
+
+        mensaje("\nIngrese la palabra en ingles a la que le quiere cambiar el valor\n");
+
+        return scan.nextLine();
+    }
+
+    public String getTradcambio(){
+
+        mensaje("\nIngrese el significado en español de la palabra anterior\n");
 
         return scan.nextLine();
     }

@@ -1,3 +1,12 @@
+/**
+ * Binarytree
+ * @author Jimena Hernandez/21199
+ * @version 08/04/2022
+ * Universidad del Valle de Guatemala
+ * Algoritmos y estructuras de Datos
+ * HDT7
+ * ref: https://github.com/eugenp/tutorials/blob/master/data-structures/src/main/java/com/baeldung/tree/BinaryTree.java
+ */
 import java.lang.*;
 import java.util.*;
 
@@ -5,16 +14,16 @@ public class BinaryTree<E extends Comparable<E>>{
 
 	Node root;
 
-	private Node addValueRecursive(Node current, E value){
+	private Node addValueRecursive(Node current, E valueOf){
 		if(current == null){
-			return new Node(value);
+			return new Node(valueOf);
 		}
 
 		E  aux = (E)current.valueOf;
-		if(value.compareTo(aux)<0){
-			current.left = addValueRecursive(current.left, value);
-		}else if(value.compareTo(aux)>0){
-			current.right = addValueRecursive(current.right, value);
+		if(valueOf.compareTo(aux)<0){
+			current.left = addValueRecursive(current.left, valueOf);
+		}else if(valueOf.compareTo(aux)>0){
+			current.right = addValueRecursive(current.right, valueOf);
 		}else{
 			return current;
 		}
@@ -66,4 +75,6 @@ public class BinaryTree<E extends Comparable<E>>{
 	public Node getRoot(){
 		return root;
 	}
+
+
 }
