@@ -2,5 +2,5 @@
 (je, yo)
 (chien, perro)
 (tâche, tarea)
-(village, pueblo)
+(ville, pueblo)
 (oui, si)
