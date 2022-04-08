@@ -30,7 +30,7 @@ public class Vista {
      * Bienvenida
      */
     public void inicio(){
-        System.out.println("\n DICCIONARIO  ");
+        System.out.println("\n BIENVENIDO A SU DICCIONARIO VIRTUAL  ");
     }
 
     /**

@@ -147,7 +147,7 @@ private static Vista vista = new Vista();
                     try {
                         ArrayList<String> temp = new ArrayList<String>();
                         String traduc = "";
-                        Scanner translator = new Scanner(new File("traduccionprueba.txt"));
+                        Scanner translator = new Scanner(new File("traduccionenglish.txt"));
                         String div = translator.nextLine();
                         String[] divpalabras = div.split(" ");
 
