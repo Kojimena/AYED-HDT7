@@ -52,9 +52,6 @@ public class BinaryTree<E extends Comparable<E>>{
 		else{
 			return containsRecursive(current.right, valueOf);
 		}
-		/*return valueOf <current.valueOf
-			?containsRecursive(current.left, valueOf);
-			: containsRecursive(current.right, valueOf);*/
 	}
 
 	public boolean containsNode(E  valueOf){
