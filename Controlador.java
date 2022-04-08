@@ -33,36 +33,36 @@ private static Vista vista = new Vista();
         lenguaje = vista.menuidioma();
         if (lenguaje == 1){
          //LECTURA
-        try{
-			String line = "";
-			Scanner reader = new Scanner(new File(archivoenglish));	
-			while(reader.hasNextLine()){
-				line = reader.nextLine();
-				String[] parts = line.split(", ");
-                String key = parts[0].replace("(","").toLowerCase();
-                String value = parts[1].replace(")","").toLowerCase();
-                association= new ComparableAssociation<String,String>(key, value);
-                dictionary.addValue(association); //Se agregan datos al tree
+            try{
+                String line = "";
+                Scanner reader = new Scanner(new File(archivoenglish));
+                while(reader.hasNextLine()){
+                    line = reader.nextLine();
+                    String[] parts = line.split(", ");
+                    String key = parts[0].replace("(","").toLowerCase();
+                    String value = parts[1].replace(")","").toLowerCase();
+                    association= new ComparableAssociation<String,String>(key, value);
+                    dictionary.addValue(association); //Se agregan datos al tree
+                }
+            }catch(Exception e){
+                    System.out.println("El archivo no ha sido encontrado");
             }
-        }catch(Exception e){
-			    System.out.println("El archivo no ha sido encontrado");
-		}
-    }else if(lenguaje== 2){
-        try{
-			String line = "";
-			Scanner reader = new Scanner(new File(archivofrench));	
-			while(reader.hasNextLine()){
-				line = reader.nextLine();
-				String[] parts = line.split(", ");
-                String key = parts[0].replace("(","").toLowerCase();
-                String value = parts[1].replace(")","").toLowerCase();
-                association= new ComparableAssociation<String,String>(key, value);
-                dictionary.addValue(association); //Se agregan datos al tree
+        }else if(lenguaje== 2){
+            try{
+                String line = "";
+                Scanner reader = new Scanner(new File(archivofrench));
+                while(reader.hasNextLine()){
+                    line = reader.nextLine();
+                    String[] parts = line.split(", ");
+                    String key = parts[0].replace("(","").toLowerCase();
+                    String value = parts[1].replace(")","").toLowerCase();
+                    association= new ComparableAssociation<String,String>(key, value);
+                    dictionary.addValue(association); //Se agregan datos al tree
+                }
+            }catch(Exception e){
+                    System.out.println("El archivo no ha sido encontrado");
             }
-        }catch(Exception e){
-			    System.out.println("El archivo no ha sido encontrado");
-		}
-    }
+        }
     opcion = vista.menu(); //se llama la opción
 
         while(opcion != 7){
@@ -71,7 +71,7 @@ private static Vista vista = new Vista();
 			    di_ordenado =  dictionary.inOrder(dictionary.getRoot());
 			    vista.mensaje("\n Diccionario ordenado in order\n");
 			    for(int i=0; i<di_ordenado.size(); i++){
-				System.out.println("("+di_ordenado.get(i).getKey()+", "+di_ordenado.get(i).getValue()+")");
+				    System.out.println("("+di_ordenado.get(i).getKey()+", "+di_ordenado.get(i).getValue()+")");
 			    }
                 di_ordenado.clear();
                 break;
@@ -91,8 +91,8 @@ private static Vista vista = new Vista();
                 di_ordenado =  dictionary.inOrder(dictionary.getRoot());
 			    vista.mensaje("\n Diccionario actualizado in order:\n");
 			    for(int i=0; i<di_ordenado.size(); i++){
-				vista.mensaje("("+di_ordenado.get(i).getKey()+", "+di_ordenado.get(i).getValue()+")");
-                vista.mensaje("\n");
+				    vista.mensaje("("+di_ordenado.get(i).getKey()+", "+di_ordenado.get(i).getValue()+")");
+                    vista.mensaje("\n");
 			    }
                 di_ordenado.clear();
                 break;
@@ -112,8 +112,8 @@ private static Vista vista = new Vista();
                 di_ordenado =  dictionary.inOrder(dictionary.getRoot());
                 vista.mensaje("\n Diccionario actualizado in order:\n");
 			    for(int i=0; i<di_ordenado.size(); i++){
-				vista.mensaje("("+di_ordenado.get(i).getKey()+", "+di_ordenado.get(i).getValue()+")");
-                vista.mensaje("\n");
+				    vista.mensaje("("+di_ordenado.get(i).getKey()+", "+di_ordenado.get(i).getValue()+")");
+                    vista.mensaje("\n");
 			    }
                 di_ordenado.clear();
                 break;
@@ -168,7 +168,7 @@ private static Vista vista = new Vista();
                         vista.mensaje("\nFrase traducida:\t");
                         System.out.println(traduc);
                     } catch (Exception e) {
-                        System.out.println("El archivo a traducir no existe");
+                        System.out.println("El archivo a traducir no existe,por favor verifique que esté en la carpeta");
                     }
                 }else if(lenguaje==2){
                     try {
@@ -195,7 +195,7 @@ private static Vista vista = new Vista();
                         vista.mensaje("\nFrase traducida:\t");
                         System.out.println(traduc);
                     } catch (Exception e) {
-                        System.out.println("El archivo a traducir no existe");
+                        System.out.println("El archivo a traducir no existe,por favor verifique que esté en la carpeta");
                     }
                 }
                 di_ordenado.clear();
@@ -206,7 +206,7 @@ private static Vista vista = new Vista();
                 break;
 
                 //Se le avisa al usuario que no esta ingresando una opción correcta
-            default: vista.mensaje("-Opcion invalida, porfavor ingrese una opción valida-");   break;
+            default: vista.mensaje("-Opción invalida, porfavor ingrese una opción valida-");   break;
             }
             opcion = vista.menu();
         }
