@@ -38,8 +38,8 @@ private static Vista vista = new Vista();
 			while(reader.hasNextLine()){
 				line = reader.nextLine();
 				String[] parts = line.split(", ");
-                String key = parts[0].replace("(","");
-                String value = parts[1].replace(")","");
+                String key = parts[0].replace("(","").toLowerCase();
+                String value = parts[1].replace(")","").toLowerCase();
                 association= new ComparableAssociation<String,String>(key, value);
                 dictionary.addValue(association); //Se agregan datos al tree
             }
@@ -47,7 +47,7 @@ private static Vista vista = new Vista();
 			    System.out.println("El archivo no ha sido encontrado");
 		}
 
-        while(opcion != 5){
+        while(opcion != 6){
             switch(opcion){
                 case 1: //Ordenar In order
 			    di_ordenado =  dictionary.inOrder(dictionary.getRoot());
@@ -60,21 +60,37 @@ private static Vista vista = new Vista();
                 case 2: //Agregar palabra 
                 String nuevaP = vista.getPalabraNueva();
                 String nuevaT= vista.getTradNueva();
-                association= new ComparableAssociation<String,String>(nuevaP, nuevaT);
+                association= new ComparableAssociation<String,String>(nuevaP.toLowerCase(), nuevaT.toLowerCase());
                 dictionary.addValue(association); //Se agregan datos al tree
                 vista.mensaje("\nSu palabra se agrego exitosamente al arbol!!!");
                 di_ordenado =  dictionary.inOrder(dictionary.getRoot());
 			    vista.mensaje("\n Diccionario actualizado in order:\n");
 			    for(int i=0; i<di_ordenado.size(); i++){
 				vista.mensaje("("+di_ordenado.get(i).getKey()+", "+di_ordenado.get(i).getValue()+")");
+                vista.mensaje("\n");
 			    }
                 di_ordenado.clear();
 
                 break;
                 case 3: //Cambiar valor
-                
+                String viejat= vista.getPalabra().toLowerCase();
+                String nuevat=vista.getTradcambio().toLowerCase();
+                association= new ComparableAssociation<String,String>(viejat.toLowerCase(), nuevat.toLowerCase());
+                dictionary.delete(association); //Se agregan datos al tree
+                vista.mensaje("\nSu palabra se ha eliminado exitosamente del arbol!!!");
+                di_ordenado =  dictionary.inOrder(dictionary.getRoot());
+                vista.mensaje("\n Diccionario actualizado in order:\n");
+			    for(int i=0; i<di_ordenado.size(); i++){
+				vista.mensaje("("+di_ordenado.get(i).getKey()+", "+di_ordenado.get(i).getValue()+")");
+                vista.mensaje("\n");
+			    }
+                di_ordenado.clear();
                 break;
                 case 4: // Traducir
+                break;
+                case 5:
+                vista.mensaje("\nsaliendo...");
+                System.exit(0);
                 break;
 
                 //Se le avisa al usuario que no esta ingresando una opción correcta

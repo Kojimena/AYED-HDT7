@@ -62,7 +62,7 @@ public class Vista {
      */
     public String getPalabra(){
 
-        mensaje("\nIngrese la palabra que desea editar o eliminar");
+        mensaje("\nIngrese la palabra en ingles que desea editar o eliminar\n");
 
         return scan.nextLine();
     }

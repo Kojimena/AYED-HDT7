@@ -39,8 +39,4 @@ public class ComparableAssociation<K extends Comparable<K>,V> implements Compara
 		return this.value;
 	}
 
-
-
-
-
 }

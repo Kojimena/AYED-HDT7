@@ -6,15 +6,18 @@
  * Algoritmos y estructuras de Datos
  * HDT7
  */
+import java.lang.*;
+
 public class Node<E>{
 	E valueOf;
 	Node left;
 	Node right;
-    public int value;
 
 	Node(E valueOf){
 		this.valueOf = valueOf;
 		right = null;
 		left = null;
 	}
+
+	
 }
