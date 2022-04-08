@@ -75,12 +75,19 @@ private static Vista vista = new Vista();
 			    }
                 di_ordenado.clear();
                 break;
-                case 2: //Agregar palabra 
-                String nuevaP = vista.getPalabraNueva();
-                String nuevaT= vista.getTradNueva();
+                case 2: //Agregar palabra
+                    String nuevaP = "";
+                    String nuevaT= "";
+                    if (lenguaje==1) {
+                        nuevaP = vista.getPalabraNueva();
+                        nuevaT = vista.getTradNueva();
+                    }else if(lenguaje == 2){
+                        nuevaP = vista.getPalabraNuevafrenc();
+                        nuevaT = vista.getTradNueva();
+                    }
                 association= new ComparableAssociation<String,String>(nuevaP.toLowerCase(), nuevaT.toLowerCase());
                 dictionary.addValue(association); //Se agregan datos al tree
-                vista.mensaje("\nSu palabra se agrego exitosamente al arbol!!!");
+                vista.mensaje("\nSu palabra se agrego exitosamente al diccionario!!!");
                 di_ordenado =  dictionary.inOrder(dictionary.getRoot());
 			    vista.mensaje("\n Diccionario actualizado in order:\n");
 			    for(int i=0; i<di_ordenado.size(); i++){
@@ -90,11 +97,18 @@ private static Vista vista = new Vista();
                 di_ordenado.clear();
                 break;
                 case 3: //Eliminar
-                String viejat= vista.getPalabra().toLowerCase();
-                String nuevat=vista.getTradcambio().toLowerCase();
-                association= new ComparableAssociation<String,String>(viejat.toLowerCase(), nuevat.toLowerCase());
+                    String viejat = "";
+                    String nuevat = "";
+                    if (lenguaje==1) {
+                        viejat = vista.getPalabra().toLowerCase();
+                        nuevat = vista.getTradcambio().toLowerCase();
+                    }else if (lenguaje == 2){
+                        viejat = vista.getPalabrafrench().toLowerCase();
+                        nuevat = vista.getTradcambio().toLowerCase();
+                    }
+                association= new ComparableAssociation<String,String>(viejat, nuevat);
                 dictionary.delete(association); //Se eliminan datos del tree
-                vista.mensaje("\nSu palabra se ha eliminado exitosamente del arbol!!!");
+                vista.mensaje("\nSu palabra se ha eliminado exitosamente del diccionario!!!");
                 di_ordenado =  dictionary.inOrder(dictionary.getRoot());
                 vista.mensaje("\n Diccionario actualizado in order:\n");
 			    for(int i=0; i<di_ordenado.size(); i++){
@@ -104,34 +118,85 @@ private static Vista vista = new Vista();
                 di_ordenado.clear();
                 break;
                 case 4://Editar
+                    String poriginal = "";
+                    String tanterior = "";
+                    if (lenguaje==1) {
+                        poriginal = vista.getPalabracambio().toLowerCase();
+                        tanterior = vista.getTradcambio().toLowerCase();
+                    }else if (lenguaje == 2){
+                        poriginal = vista.getPalabracambiofrench().toLowerCase();
+                        tanterior = vista.getTradcambio().toLowerCase();
+                    }
+                    String tnueva = vista.getTradNueva();
+                    association= new ComparableAssociation<String,String>(poriginal.toLowerCase(), tanterior.toLowerCase());
+                    dictionary.delete(association); //Se eliminan datos del tree
+                    association= new ComparableAssociation<String,String>(poriginal.toLowerCase(), tnueva.toLowerCase());
+                    dictionary.addValue(association); //Se agregan datos del tree
+                    vista.mensaje("\nSu palabra se ha editado exitosamente del diccionario!!!");
+                    di_ordenado =  dictionary.inOrder(dictionary.getRoot());
+                    vista.mensaje("\n Diccionario actualizado in order:\n");
+                    for(int i=0; i<di_ordenado.size(); i++){
+                        vista.mensaje("("+di_ordenado.get(i).getKey()+", "+di_ordenado.get(i).getValue()+")");
+                        vista.mensaje("\n");
+                    }
+                    di_ordenado.clear();
                 break;
                 case 5: // Traducir
                 di_ordenado =  dictionary.inOrder(dictionary.getRoot());
-                try{
-                    ArrayList<String> temp = new ArrayList<String>();
-                    String traduc = "";
-                    Scanner translator = new Scanner(new File("traduccionprueba.txt"));
-                    String div = translator.nextLine();
-                    String[] divpalabras = div.split(" ");
-    
-                    vista.mensaje("\nFrase a traducir:\t");
-                    System.out.println(div);
-    
-                    for(int i=0; i<divpalabras.length;i++){
-                        temp.add("*"+divpalabras[i]+"*");
-                        for(int j=0;j<di_ordenado.size();j++){
-                            if(divpalabras[i].equalsIgnoreCase(di_ordenado.get(j).getKey())){
-                                temp.set(i, ""+di_ordenado.get(j).getValue()+"");
+                if (lenguaje==1) {
+                    try {
+                        ArrayList<String> temp = new ArrayList<String>();
+                        String traduc = "";
+                        Scanner translator = new Scanner(new File("traduccionprueba.txt"));
+                        String div = translator.nextLine();
+                        String[] divpalabras = div.split(" ");
+
+                        vista.mensaje("\nFrase a traducir:\t");
+                        System.out.println(div);
+
+                        for (int i = 0; i < divpalabras.length; i++) {
+                            temp.add("*" + divpalabras[i] + "*");
+                            for (int j = 0; j < di_ordenado.size(); j++) {
+                                if (divpalabras[i].equalsIgnoreCase(di_ordenado.get(j).getKey())) {
+                                    temp.set(i, "" + di_ordenado.get(j).getValue() + "");
+                                }
                             }
                         }
+                        for (int i = 0; i < temp.size(); i++) {
+                            traduc += temp.get(i) + " ";
+                        }
+                        vista.mensaje("\nFrase traducida:\t");
+                        System.out.println(traduc);
+                    } catch (Exception e) {
+                        System.out.println("El archivo a traducir no existe");
                     }
-                    for(int i=0; i< temp.size();i++){
-                        traduc += temp.get(i)+" ";
+                }else if(lenguaje==2){
+                    try {
+                        ArrayList<String> temp = new ArrayList<String>();
+                        String traduc = "";
+                        Scanner translator = new Scanner(new File("traduccionfrench.txt"));
+                        String div = translator.nextLine();
+                        String[] divpalabras = div.split(" ");
+
+                        vista.mensaje("\nFrase a traducir:\t");
+                        System.out.println(div);
+
+                        for (int i = 0; i < divpalabras.length; i++) {
+                            temp.add("*" + divpalabras[i] + "*");
+                            for (int j = 0; j < di_ordenado.size(); j++) {
+                                if (divpalabras[i].equalsIgnoreCase(di_ordenado.get(j).getKey())) {
+                                    temp.set(i, "" + di_ordenado.get(j).getValue() + "");
+                                }
+                            }
+                        }
+                        for (int i = 0; i < temp.size(); i++) {
+                            traduc += temp.get(i) + " ";
+                        }
+                        vista.mensaje("\nFrase traducida:\t");
+                        System.out.println(traduc);
+                    } catch (Exception e) {
+                        System.out.println("El archivo a traducir no existe");
                     }
-                    vista.mensaje("\nFrase traducida:\t");
-                    System.out.println(traduc);
-                }catch(Exception e){
-                    System.out.println("El archivo a traducir no existe");
                 }
                 di_ordenado.clear();
                 break;

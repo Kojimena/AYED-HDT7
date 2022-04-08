@@ -96,6 +96,23 @@ public class Vista {
         return scan.nextLine();
     }
 
+    /**
+     * Getter de la palabra a editar o eliminar.
+     */
+    public String getPalabrafrench(){
+
+        mensaje("\nIngrese la palabra en frances que desea editar o eliminar\n");
+
+        return scan.nextLine();
+    }
+
+    public String getPalabraNuevafrenc(){
+
+        mensaje("\nIngrese la palabra en frances que quiere agregar\n");
+
+        return scan.nextLine();
+    }
+
     public String getTradNueva(){
 
         mensaje("\nIngrese el nuevo significado en español de la palabra agregada\n");
@@ -110,12 +127,20 @@ public class Vista {
         return scan.nextLine();
     }
 
+    public String getPalabracambiofrench(){
+
+        mensaje("\nIngrese la palabra en frances a la que le quiere cambiar el valor\n");
+
+        return scan.nextLine();
+    }
+
     public String getTradcambio(){
 
         mensaje("\nIngrese el significado en español de la palabra anterior\n");
 
         return scan.nextLine();
     }
+
 
 
 
