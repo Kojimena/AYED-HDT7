@@ -1,0 +1,6 @@
+(merci, gracias)
+(je, yo)
+(chien, perro)
+(tâche, tarea)
+(village, pueblo)
+(oui, si)

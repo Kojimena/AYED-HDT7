@@ -42,8 +42,30 @@ public class Vista {
         mensaje("\n1. Recorrer diccionario *in order* ");
         mensaje("\n2. Agregar palabra al diccionario ");
         mensaje("\n3. Eliminar palabra del diccionario ");
-        mensaje("\n4. Procesar archivo para traducirlo");
-        mensaje("\n5. Salir del programa");
+        mensaje("\n4. Editar palabra del diccionario ");
+        mensaje("\n5. Procesar archivo para traducirlo");
+        mensaje("\n6. Salir del programa");
+
+        mensaje("\nSeleccion: ");
+        try {
+            opcion = scan.nextInt();
+            
+        } catch (InputMismatchException e) {
+            mensaje("Porfavor, ingrese una opcion valida");
+            opcion = scan.nextInt();
+        }
+		scan.nextLine();
+		return opcion;
+    }
+
+    /**
+    * Despliega el menú de opciones para el usuario. Luego, recibe la opción elegida por el usuario y la devuelve.
+    * @return La opción elegida por el usuario
+    */
+    public int menuidioma(){
+        mensaje("\n" +" Seleccione la forma de uso del diccionario ");
+        mensaje("\n1. Ingles-español ");
+        mensaje("\n2. Frances-español");
 
         mensaje("\nSeleccion: ");
         try {

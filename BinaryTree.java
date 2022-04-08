@@ -5,7 +5,8 @@
  * Universidad del Valle de Guatemala
  * Algoritmos y estructuras de Datos
  * HDT7
- * ref: https://github.com/eugenp/tutorials/blob/master/data-structures/src/main/java/com/baeldung/tree/BinaryTree.java
+ * referencias : https://github.com/eugenp/tutorials/blob/master/data-structures/src/main/java/com/baeldung/tree/BinaryTree.java
+ *               https://github.com/jnethery/CS2/blob/master/Generic%20Binary%20Search%20Tree/GenericBST.java
  */
 import java.lang.*;
 import java.util.*;
